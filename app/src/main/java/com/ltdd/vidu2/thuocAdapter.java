@@ -30,6 +30,7 @@ public class thuocAdapter extends ArrayAdapter<thongTinThuoc> {
     Context context;
     List<thongTinThuoc> lsData;
     thuocAdapter adapter;
+
     public thuocAdapter(@NonNull Context context, List<thongTinThuoc> lsSP) {
         super(context,0 ,lsSP);
         this.context = context;

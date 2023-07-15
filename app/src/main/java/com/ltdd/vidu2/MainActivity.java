@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,12 +46,21 @@ public class MainActivity extends AppCompatActivity {
         lvThuoc.setAdapter(adapter);
 
     }
-
+    protected void onPostResume() {
+        super.onPostResume();
+        //refresh adapter
+        lsData.clear();
+        lsData.addAll(thuocDB.getAllThuoc());
+        adapter.notifyDataSetChanged();
+        lvThuoc.invalidateViews();
+        lvThuoc.refreshDrawableState();
+    }
     public void onInsThuocClick(View view) {
         Intent insIntent = new Intent(this, them.class);
         insIntent.putExtra("ins_upd", "insert");
         insThuoc.launch(insIntent);
     }
+    private static final String TAG = "MainActivity";
     ActivityResultLauncher<Intent> insThuoc= registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -62,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             //insert du lieu vao database
                             thongTinThuoc db =(thongTinThuoc) data.getExtras().getSerializable("ins");
                             thuocDB.insThuoc(db);
+                            Log.d(TAG, "onCreate called");
                         }
                     }
                 }

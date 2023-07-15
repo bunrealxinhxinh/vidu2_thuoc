@@ -89,6 +89,12 @@ public class them extends AppCompatActivity {
                 }
             }
         });
+        btnDong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void getViews(){

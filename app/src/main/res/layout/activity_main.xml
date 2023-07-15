@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btnSearch"
+            android:id="@+id/btnExpired"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Loc danh sach thuoc het han"
@@ -55,7 +55,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="3dp"
         android:clickable="true"
-        android:onClick="onInsSanPhamClick"
+        android:onClick="onInsThuocClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
